@@ -14,11 +14,11 @@ async function getCategories() {
     let HTMLoutput = ""
 
     for(let i=0;i<categories.length; i++){
-        HTMLoutput += `<div>${categories[i].title}</div>`
+        HTMLoutput += `<div class="category-header">${categories[i].title}</div>`
         // console.log(categories[i].title)
     }
     for(let i=0; i<4; i++){
-        HTMLoutput += `<div>$${i+1}00</div><div>$${i+1}00</div><div>$${i+1}00</div><div>$${i+1}00</div>`
+        HTMLoutput += `<div class="answer">$${i+1}00</div><div class="answer">$${i+1}00</div><div class="answer">$${i+1}00</div><div class="answer">$${i+1}00</div>`
     }
    gameBoard.innerHTML = HTMLoutput;
     

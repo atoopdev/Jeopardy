@@ -10,19 +10,24 @@ async function getCategories() {
     }
     categories = await response.json();
     console.log(categories)
-    
-    let HTMLoutput = ""
-
-    for(let i=0;i<categories.length; i++){
-        HTMLoutput += `<div class="category-header">${categories[i].title}</div>`
-        // console.log(categories[i].title)
-    }
-    for(let i=0; i<4; i++){
-        HTMLoutput += `<div class="answer">$${i+1}00</div><div class="answer">$${i+1}00</div><div class="answer">$${i+1}00</div><div class="answer">$${i+1}00</div>`
-    }
-   gameBoard.innerHTML = HTMLoutput;
-    
-
+    return categories
 }
 
-getCategories()
+getCategories().then(categories =>{
+    console.log(categories)
+    gameBoard.innerHTML = `${categories.map(getCategoryHTML).join('')}`
+    
+})
+
+function getCategoryHTML(category){
+   return `<div class="category-header">${category.title}</div>
+   <div class="clue row1">$100</div>
+   <div class="clue row2">$200</div>
+   <div class="clue row3">$300</div>
+   <div class="clue row4">$400</div>`  
+    }
+
+
+
+
+
